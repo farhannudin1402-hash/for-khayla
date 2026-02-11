@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Khayla 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{
+font-family:'Poppins',sans-serif;
+color:white;
+background:black;
+overflow-x:hidden;
+transition:opacity 2s ease;
+}
+
+/* STAR BACKGROUND */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url('https://www.transparenttextures.com/patterns/stardust.png');
+animation:moveStars 120s linear infinite;
+z-index:-1;
+filter:blur(2px);
+transition:filter 2s ease;
+}
+.stars.clear{filter:blur(0);}
+@keyframes moveStars{
+from{background-position:0 0;}
+to{background-position:10000px 5000px;}
+}
+
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px;
+text-align:center;
+}
+
+/* INTRO */
+.intro h1{
+font-family:'Playfair Display',serif;
+font-size:58px;
+background:linear-gradient(45deg,#ff9ad5,#ffffff,#ff66c4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+filter:drop-shadow(0 0 20px #ff66c4);
+min-height:80px;
+}
+
+.btn{
+margin-top:40px;
+padding:15px 45px;
+border-radius:50px;
+border:none;
+font-size:18px;
+background:linear-gradient(45deg,#ff4da6,#ff66cc);
+color:white;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 0 20px #ff4da6;
+}
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 50px #ff4da6;
+}
+
+/* POETRY */
+.poetry{
+display:none;
+max-width:700px;
+margin-top:40px;
+font-family:'Playfair Display',serif;
+line-height:1.9;
+font-size:19px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(25px);
+padding:45px;
+border-radius:30px;
+box-shadow:0 0 50px rgba(255,0,150,0.4);
+animation:fadeUp 1.5s ease forwards;
+}
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* SLIDER */
+.slider{
+position:relative;
+width:90%;
+max-width:500px;
+height:420px;
+margin:40px auto;
+overflow:hidden;
+border-radius:25px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+.slider img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+object-position:center;
+opacity:0;
+transition:opacity 1s ease, transform 4s ease;
+border-radius:25px;
+}
+.slider img.active{
+opacity:1;
+transform:scale(1.05);
+}
+
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.92);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+.modal img{
+width:65%;
+border-radius:25px;
+animation:fadeUp 0.8s ease forwards;
+}
+
+/* HEARTS */
+.heart{
+position:fixed;
+font-size:22px;
+animation:floatUp 6s linear infinite;
+opacity:0.8;
+}
+@keyframes floatUp{
+0%{transform:translateY(100vh) scale(1);}
+100%{transform:translateY(-10vh) scale(1.4);}
+}
+
+/* ENDING */
+.ending{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:radial-gradient(circle at center,#0f0f1f,#000);
+}
+.ending-text{
+font-family:'Playfair Display',serif;
+font-size:48px;
+letter-spacing:3px;
+background:linear-gradient(45deg,#ffffff,#ff9ad5,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+opacity:0;
+transform:translateY(30px);
+transition:all 2s ease;
+text-shadow:0 0 40px rgba(255,105,180,0.6);
+}
+.ending.show .ending-text{
+opacity:1;
+transform:translateY(0);
+}
+
+/* HEARTBEAT */
+.heartbeat{
+display:inline-block;
+animation:beat 1.2s infinite;
+background:linear-gradient(45deg,#ffffff,#ff4da6,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 25px rgba(255,0,150,0.6);
+}
+@keyframes beat{
+0%{transform:scale(1);}
+25%{transform:scale(1.15);}
+40%{transform:scale(1);}
+60%{transform:scale(1.12);}
+100%{transform:scale(1);}
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+margin-top:40px;
+padding:12px 35px;
+border-radius:40px;
+border:none;
+font-size:16px;
+background:rgba(255,255,255,0.15);
+color:white;
+cursor:pointer;
+transition:0.4s;
+backdrop-filter:blur(10px);
+}
+.close-btn:hover{
+background:#ff4da6;
+box-shadow:0 0 30px #ff4da6;
+transform:scale(1.1);
+}
+
+/* Fade out */
+.fade-out{
+opacity:0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<section class="intro">
+<h1 id="typing"></h1>
+<button class="btn" onclick="startExperience()">Enter</button>
+</section>
+
+<section id="loveSection">
+<h1 style="font-family:'Playfair Display';font-size:50px;">Happy Valentine</h1>
+<button class="btn" onclick="showPoetry()">Open My Heart</button>
+
+<div class="poetry" id="poetry">
+Khayla 🤍<br><br>
+I may not always find the perfect words,
+but my heart has always known your name.<br><br>
+In the quiet moments,
+you have become my favorite kind of peace.<br><br>
+And if I could choose again,
+I would still choose you. 💞
+</div>
+</section>
+
+<section>
+<h1 style="font-family:'Playfair Display';font-size:40px;">Our Moments ✨</h1>
+
+<div class="slider" onclick="openModal(currentImage)">
+<img src="WhatsApp Image 2026-02-11 at 15.10.55 (1).jpeg" class="active">
+<img src="WhatsApp Image 2026-02-11 at 15.11.49.jpeg">
+<img src="WhatsApp Image 2026-02-11 at 15.12.04.jpeg">
+<img src="WhatsApp Image 2026-02-11 at 15.10.56.jpeg">
+<img src="WhatsApp Image 2026-02-11 at 15.10.57.jpeg">
+</div>
+
+<button class="btn" onclick="nextSlide()">Next Memory</button>
+</section>
+
+<section class="ending">
+<div class="ending-text">
+Forever, with <span class="heartbeat">Khayla</span>.
+</div>
+<button class="close-btn" onclick="closeExperience()">Close</button>
+</section>
+
+<audio id="bgMusic" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5b7b9d7c5f.mp3?filename=romantic-background-112196.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="heartbeatSound">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_3b3e4c0b1a.mp3?filename=heartbeat-6237.mp3" type="audio/mpeg">
+</audio>
+
+<div class="modal" id="modal" onclick="closeModal()">
+<img id="modalImg">
+</div>
+
+<script>
+/* Typing */
+const text="For Khayla Mulya Annida 🤍";
+let i=0;
+function typeWriter(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,70);
+}}
+typeWriter();
+
+/* Start */
+function startExperience(){
+document.getElementById("stars").classList.add("clear");
+document.getElementById("loveSection").scrollIntoView({behavior:"smooth"});
+document.getElementById("bgMusic").play();
+}
+
+/* Poetry */
+function showPoetry(){
+document.getElementById("poetry").style.display="block";
+}
+
+/* Slider */
+let slides=document.querySelectorAll(".slider img");
+let index=0;
+let currentImage=slides[0].src;
+function nextSlide(){
+slides[index].classList.remove("active");
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
+currentImage=slides[index].src;
+}
+setInterval(nextSlide,4000);
+
+/* Modal */
+function openModal(src){
+document.getElementById("modal").style.display="flex";
+document.getElementById("modalImg").src=src;
+}
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+/* Hearts */
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="🤍";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*25+15)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,500);
+
+/* Ending */
+const bgMusic=document.getElementById("bgMusic");
+const heartbeat=document.getElementById("heartbeatSound");
+const ending=document.querySelector('.ending');
+
+window.addEventListener('scroll',()=>{
+const trigger=ending.getBoundingClientRect().top;
+if(trigger<window.innerHeight-100){
+ending.classList.add('show');
+heartbeat.play();
+fadeMusic();
+}
+});
+
+function fadeMusic(){
+let volume=bgMusic.volume;
+let fade=setInterval(()=>{
+if(volume>0.05){
+volume-=0.05;
+bgMusic.volume=volume;
+}else{
+clearInterval(fade);
+}
+},300);
+}
+
+function closeExperience(){
+document.body.classList.add("fade-out");
+setTimeout(()=>{
+document.body.innerHTML="";
+document.body.style.background="black";
+},2000);
+}
+</script>
+
+</body>
+</html>
